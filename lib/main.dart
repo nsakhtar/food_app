@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scholarship_hub/View/Splashscreen/splash_screen.dart';
-import 'package:scholarship_hub/res/MyTheme/dark_theme.dart';
-import 'package:scholarship_hub/res/MyTheme/light_theme.dart';
-import 'package:scholarship_hub/res/routes/routes.dart';
-
-
-
-
+import 'package:recipe_food/routes/routes.dart';
+import 'Pages/splashscreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,17 +10,17 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      theme: ThemeData(
+        fontFamily: 'Raleway',
+        useMaterial3: true,
+      ),
       getPages: AppRoutes.appRoutes(),
-      theme: lightTheme(),
-      darkTheme: darkTheme(),
+      home: const SplashScreen(),
     );
   }
 }
-
-
