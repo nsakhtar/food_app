@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:recipe_food/Pages/homescreen.dart';
+import 'package:recipe_food/Pages/item_detail_screen.dart';
+import 'package:recipe_food/Pages/reviews_screen.dart';
 import 'package:recipe_food/routes/route_name.dart';
 
 import '../Pages/bottom_navigation_bar.dart';
@@ -28,6 +30,14 @@ class AppRoutes {
         GetPage(
           name: RouteName.bottomNavigationBar,
           page: () => const BottomNavigationBar(),
+        ),
+        GetPage(
+          name: RouteName.itemDetailScreen,
+          page: () => const ItemDetailScreen(),
+        ),
+        GetPage(
+          name: RouteName.reviewsScreen,
+          page: () => const ReviewsScreen(),
         ),
       ];
 }

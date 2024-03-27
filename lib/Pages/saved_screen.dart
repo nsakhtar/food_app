@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:recipe_food/CommenWidget/app_text.dart';
 import 'package:recipe_food/CommenWidget/saved_container.dart';
+import 'package:recipe_food/routes/route_name.dart';
 
 class SavedScreen extends StatefulWidget {
   const SavedScreen({super.key});
@@ -29,7 +31,11 @@ class _SavedScreenState extends State<SavedScreen> {
             itemBuilder: (index, context) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: SavedContainer(),
+            child: GestureDetector(
+                onTap: (){
+                  Get.toNamed(RouteName.itemDetailScreen);
+                },
+                child: SavedContainer()),
           );
         }));
   }

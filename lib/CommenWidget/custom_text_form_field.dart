@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,11 +6,16 @@ import 'app_text.dart';
 class CustomTextFormField extends StatelessWidget {
   final String? label;
   final String hintText;
-  final double? width,height;
+  final double? width;
+  final double? height;
+  final Color? borderColor;
+
   const CustomTextFormField({
     Key? key,
     this.label,
-    required this.hintText, this.width, this.height,
+    required this.hintText,
+    this.width,
+    this.height, this.borderColor,
   }) : super(key: key);
 
   @override
@@ -20,15 +23,17 @@ class CustomTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppText(
-          text: label??'',
-          textColor: Colors.black,
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-        ),
-        SizedBox(height: 5),
+        if (label != null) // Conditionally include label
+          AppText(
+            text: label!,
+            textColor: Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.w400,
+          ),
+        if (label != null) // Conditionally include SizedBox for spacing
+          SizedBox(height: 5),
         SizedBox(
-          height: height??55,
+          height: height ?? 55,
           width: width ?? double.infinity,
           child: TextFormField(
             cursorColor: Colors.grey,
@@ -41,19 +46,19 @@ class CustomTextFormField extends StatelessWidget {
               ),
               border: InputBorder.none,
               enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey, width: 1.5),
+                borderSide: BorderSide(color:borderColor?? Colors.grey, width: 1.5),
                 borderRadius: BorderRadius.circular(10),
               ),
               errorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red, width: 1.5),
+                borderSide: BorderSide(color: borderColor??Colors.red, width: 1.5),
                 borderRadius: BorderRadius.circular(10),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.red, width: 1.5),
+                borderSide: BorderSide(color: borderColor??Colors.red, width: 1.5),
                 borderRadius: BorderRadius.circular(10),
               ),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey, width: 1.5),
+                borderSide: BorderSide(color: borderColor??Colors.grey, width: 1.5),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
